@@ -35,6 +35,8 @@ int main(int argc, const char * argv[]) {
 
 주석은 Swift와 별 다를 것 없다.
 
+
+
 ## 자료형
 
 Objective-C의 자료형은 C언어와 유사하다. (그냥 C언어다)
@@ -79,7 +81,89 @@ Swift는 카멜 표기법을 쓰지만, Objective-C는 스네이크 방식을 �
 
 
 
+## 클래스
 
+Objective-C가 기존 C언어와 다른 점이 바로 여기서 나온다. 
+
+기존 C언어는 절차지향 언어이지만, Objective-C는 객체지향언어이다.
+
+따라서 객체의 개념과, 클래스가 있다. 
+
+
+
+```objective-c
+@interface myClass : NSObject
+
+{
+    int num;
+    NSString *name;
+    NSString *secret;
+}
+
+@property (nonatomic, assign)   int num;
+@property (nonatomic, retain)   NSString *name;
+
+- (void) myMethod;
+- (void) setSecret:(NSString *)secret;
+- (NSString *) getmySecert;
+
++ (void) myClassMethod;
+
+@end
+```
+
+기본적인 헤더파일에서의 **클래스** 선언이다.
+
+중괄호 안에 들어가있는 부분은 **인스턴스 변수** 이고
+
+```objective-c
+{
+    int num;
+    NSString *name;
+    NSString *secret;
+} 
+//인스턴스 변수
+```
+
+중괄호 밑에는 **프로퍼티** 들이 있다.
+
+```objective-c
+@property (nonatomic, assign)   int num;
+@property (nonatomic, retain)   NSString *name;
+//프로퍼티
+```
+
+이 프로퍼티들은 나중에 나올 **@synthesize** 라는 친구와 짝을 이루어서 자동으로 접근자 메소드를 생성해주는 역할을 한다고 한다.
+
+프로퍼티 선언부 옆에 있는 **nonatomic, assign, retain** 등의 친구들은 이 프로퍼티들을 어떻게 관리할지 알려주는 아이들인데, 나중에 다시 알아보겠다.
+
+
+
+-로 시작하는 메소드들은 **인스턴스 메소드** 라고 한다.
+
+```objective-c
+- (void) myMethod;
+- (void) setSecret:(NSString *)secret;
+- (NSString *) getmySecert;
+//인스턴스 메소드
+```
+
+얘네들은 **인스턴스 상태에서만 동작**한다.
+
+
+
++로 시작하는 메소드들은 **클래스 메소드** 라는 친구들이다.
+
+```objective-c
++ (void) myClassMethod;
+//클래스 메소드
+```
+
+이친구들은 좀 특이한데, **인스턴스를 찍어내기도 전에 뭔가를 할 수 있는** 친구다.
+
+
+
+일단 클래스에 대한 헤더에서의 선언은 이정도 해주고 자세한건 구현파일에서 해주도록 하자.
 
 
 
